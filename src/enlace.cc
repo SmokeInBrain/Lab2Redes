@@ -21,7 +21,7 @@ public:
     int idHost;
     int destiny=0;
     int origen=0;
-    int variable = 0;
+    int contador = 0;
 
     //Métodos
 protected:
@@ -131,17 +131,25 @@ void enlace::processMsgFromLowerLayer(cMessage *packet) {
     origen = aux->getOrigen();
     int numHost = getId();
     ev<<"origen: "<<origen<<endl;
-
-    if(packet->getKind() == DATA){
-        send(packet, "hacia_arriba");
-        tramasRecibidasEnlace++;
-
+    contador++;
+    ev<<"contador: "<<contador<<endl;
+    if(packet->getKind()==DATA){
+        if(contador<=cantidadTramas){
+            send(packet, "hacia_arriba");
+            tramasRecibidasEnlace++;
+        }else{
+            if(contador>cantidadTramas){
+                send(packet,"hacia_fisico");
+            }
+        }
         if(tramasRecibidasEnlace == numACK){ //envio ack segun la cantidad indicada
             ev<<"Envio ACK desde el Host "<<numHost<<endl;
             Mensaje *mens = new Mensaje("Envio ACK", ACK);
             send(mens, "hacia_fisico");
             tramasRecibidasEnlace=0;
+
         }
+
     }
 }
 

@@ -1,12 +1,12 @@
 #
-# OMNeT++/OMNEST Makefile for Lab1Redes
+# OMNeT++/OMNEST Makefile for Lab2Redes
 #
 # This file was generated with the command:
 #  opp_makemake -f --deep
 #
 
 # Name of target to be created (-o option)
-TARGET = Lab1Redes$(EXE_SUFFIX)
+TARGET = Lab2Redes$(EXE_SUFFIX)
 
 # User interface (uncomment one) (-u option)
 USERIF_LIBS = $(ALL_ENV_LIBS) # that is, $(TKENV_LIBS) $(CMDENV_LIBS)
@@ -104,7 +104,7 @@ msgheaders: $(MSGFILES:.msg=_m.h)
 clean:
 	$(qecho) Cleaning...
 	$(Q)-rm -rf $O
-	$(Q)-rm -f Lab1Redes Lab1Redes.exe libLab1Redes.so libLab1Redes.a libLab1Redes.dll libLab1Redes.dylib
+	$(Q)-rm -f Lab2Redes Lab2Redes.exe libLab2Redes.so libLab2Redes.a libLab2Redes.dll libLab2Redes.dylib
 	$(Q)-rm -f ./*_m.cc ./*_m.h
 
 cleanall: clean
